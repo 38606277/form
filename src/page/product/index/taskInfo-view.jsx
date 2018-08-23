@@ -19,7 +19,7 @@ class TaskInfoView extends React.Component{
             dataList:[],
             fieldList:[],
             showHeader:true,
-            userId:_mm.getStorage('userInfo').userCode
+            userId:_mm.getStorage('userInfo').userId
         };
     }
    
@@ -40,42 +40,42 @@ class TaskInfoView extends React.Component{
    
 
     render() {
-        const format=[],titles=[];
-         this.state.fieldList.map((it,index)=>{
-            titles.push(it.field_name.replace(/(^\s*)|(\s*$)/g, ""));
-         })
-        const dataSource = this.state.dataList;
+        // const format=[],titles=[];
+        //  this.state.fieldList.map((it,index)=>{
+        //     titles.push(it.field_name.replace(/(^\s*)|(\s*$)/g, ""));
+        //  })
+        // const dataSource = this.state.dataList;
 
-        this.state.fieldList.map((it,index)=>{
-            format.push({
-                title:it.field_name,
-                dataIndex: it.field_name.replace(/(^\s*)|(\s*$)/g, ""),
-                key:it.field_name.replace(/(^\s*)|(\s*$)/g, "")
-            })
-        });
-        var listBody =  this.state.dataList.map((item,index)=>{
-            return [<tr key={index}>
-                    {
-                        Object.keys(item).map(key=>{
-                            this.state.fieldList.map((it,i)=>{
-                                if(key==it.field_name){
-                                    const val= item[key];
-                                 return (  <td key={i}>
-                                             {val}
-                                             </td>
-                                         )
-                                }
-                            })
+        // this.state.fieldList.map((it,index)=>{
+        //     format.push({
+        //         title:it.field_name,
+        //         dataIndex: it.field_name.replace(/(^\s*)|(\s*$)/g, ""),
+        //         key:it.field_name.replace(/(^\s*)|(\s*$)/g, "")
+        //     })
+        // });
+        // var listBody =  this.state.dataList.map((item,index)=>{
+        //     return [<tr key={index}>
+        //             {
+        //                 Object.keys(item).map(key=>{
+        //                     this.state.fieldList.map((it,i)=>{
+        //                         if(key==it.field_name){
+        //                             const val= item[key];
+        //                          return (  <td key={i}>
+        //                                      {val}
+        //                                      </td>
+        //                                  )
+        //                         }
+        //                     })
                             
-                        })
+        //                 })
                     
-                    }
+        //             }
                 
-                </tr>
-            ]            
-         })
+        //         </tr>
+        //     ]            
+        //  })
 
-         console.log(listBody);
+        //  console.log(listBody);
         // let listBody = this.state.dataList.map((item, index) => {
         //     console.log(item);
         //     return (
@@ -108,42 +108,7 @@ class TaskInfoView extends React.Component{
         <PageTitle title='报表' />
                 <div className="form-horizontal">
                     <div dangerouslySetInnerHTML={{__html: this.state.taskInfo}} />
-                    
-                    {/* <Table  {...this.state} dataSource={dataSource} columns={format} scroll={{ y: 240 }} /> */}
-                    <table>
-   
-                        <tbody>
-                            {listBody}
-                        {/* {
-                         this.state.dataList.map((item,index)=>{
-                            return [
-                                <tr >
-                                    <td>{item}</td>
-                                    {/* {
-                                        Object.keys(item).map(key=>{
-                                            this.state.fieldList.map((it,index)=>{
-                                                if(key==it.field_name){
-                                                    const val= item[key];
-                                                  return  ( <div>
-                                                      <td>
-                                                            {val}
-                                                            </td>
-                                                            </div>
-                                                            )
-                                                }
-                                            })
-                                            
-                                        })
-                                    
-                                    } }
-                                
-                                </tr>
-                                 ]
-                            
-                        }) */}
-                     
-                    </tbody>
-                    </table>
+                   
                 </div>
                 
         </div>
