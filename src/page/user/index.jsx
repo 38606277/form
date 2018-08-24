@@ -10,8 +10,7 @@ import MUtil        from 'util/mm.jsx'
 import User         from 'service/user-service.jsx'
 
 import PageTitle    from 'component/page-title/index.jsx';
-import TableList    from 'util/table-list/index.jsx';
-import Pagination   from 'util/pagination/index.jsx';
+import Pagination   from 'antd/lib/pagination';
 import Table        from 'antd/lib/table';
 import './../../App.css';
 const _mm   = new MUtil();
@@ -83,7 +82,7 @@ class UserList extends React.Component{
         return (
             <div id="page-wrapper">
                 <PageTitle title="用户列表"/>
-                <Table dataSource={dataSource} columns={columns} />
+                <Table dataSource={dataSource} columns={columns} pagination={false}/>
                 <Pagination current={this.state.pageNum} 
                     total={this.state.total} 
                     onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
