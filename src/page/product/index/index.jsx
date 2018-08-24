@@ -11,9 +11,8 @@ import Task     from 'service/task-service.jsx'
 
 import PageTitle    from 'component/page-title/index.jsx';
 import ListSearch   from './index-list-search.jsx';
-import Pagination   from 'util/pagination/index.jsx';
 import Table        from 'antd/lib/table';
-
+import Pagination   from 'antd/lib/pagination';
 import './index.scss';
 
 const _mm           = new MUtil();
@@ -24,10 +23,9 @@ class ProductList extends React.Component{
         super(props);
         this.state = {
             list            : [],
-            currentPage     : 1 ,
+            currentPage     : 1,
             perPage         : 10,
-            startIndex      : 0,
-            listType:'list'
+            listType        :'list'
         };
     }
     
@@ -40,7 +38,6 @@ class ProductList extends React.Component{
         listParam.userId = _mm.getStorage('userInfo').userId;
         listParam.currentPage  = this.state.currentPage;
         listParam.perPage  = this.state.perPage;
-        listParam.startIndex  = this.state.startIndex;
         // 如果是搜索的话，需要传入搜索类型和搜索关键字
         if(this.state.listType === 'search'){
             listParam.keyword    = this.state.searchKeyword;
@@ -107,11 +104,11 @@ class ProductList extends React.Component{
                     </div> */}
                 </PageTitle>
                 <ListSearch onSearch={(searchKeyword) => {this.onSearch(searchKeyword)}}/>
-                <Table dataSource={dataSource} columns={columns} />
+                <Table dataSource={dataSource} columns={columns}  pagination={false}/>
                 
-                <Pagination current={this.state.currentPage} 
+                 <Pagination current={this.state.currentPage} 
                     total={this.state.total} 
-                    onChange={(currentPage) => this.onPageNumChange(currentPage)}/>
+                    onChange={(currentPage) => this.onPageNumChange(currentPage)}/> 
             </div>
         );
     }
