@@ -7,18 +7,17 @@
 import React        from 'react';
 import { Link }     from 'react-router-dom';
 import MUtil        from 'util/mm.jsx'
-import Product      from 'service/product-service.jsx'
+import Task     from 'service/task-service.jsx'
 
 import PageTitle    from 'component/page-title/index.jsx';
 import ListSearch   from './index-list-search.jsx';
-import TableList    from 'util/table-list/index.jsx';
 import Pagination   from 'util/pagination/index.jsx';
 import Table        from 'antd/lib/table';
 
 import './index.scss';
 
 const _mm           = new MUtil();
-const _product      = new Product();
+const _product      = new Task();
 
 class TaskList extends React.Component{
     constructor(props){

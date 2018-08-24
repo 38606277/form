@@ -2,12 +2,10 @@ import React        from 'react';
 import { Link }     from 'react-router-dom';
 import MUtil        from 'util/mm.jsx'
 import PageTitle    from 'component/page-title/index.jsx';
-import Product      from 'service/product-service.jsx'
-import TableList    from 'util/table-list/index.jsx';
-import Table        from 'antd/lib/table';
+import Task     from 'service/task-service.jsx'
 import './../../../App.css';
 const _mm   = new MUtil();
-const _product      = new Product();
+const _product      = new Task();
 const showHeader = false;
 
 class TaskInfoView extends React.Component{

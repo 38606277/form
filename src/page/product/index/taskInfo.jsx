@@ -2,9 +2,9 @@ import React        from 'react';
 import { Link }     from 'react-router-dom';
 import MUtil        from 'util/mm.jsx'
 import PageTitle    from 'component/page-title/index.jsx';
-import Product      from 'service/product-service.jsx'
+import Task     from 'service/task-service.jsx'
 const _mm   = new MUtil();
-const _product      = new Product();
+const _product      = new Task();
 
 
 class TaskInfo extends React.Component{

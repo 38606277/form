@@ -24,9 +24,9 @@ class MUtil {
                     }
                    //  没有登录状态，强制登录
                     else if(10 === res.status){
-                        this.doLogin();
-                        //res.msg='查询错误'
-                       // typeof reject === 'function' && reject(res.msg || res.data);
+                      //  this.doLogin();
+                        res.msg='查询错误'
+                        typeof reject === 'function' && reject(res.msg || res.data);
                    }
                     else{
                         typeof reject === 'function' && reject(res.msg || res.data);

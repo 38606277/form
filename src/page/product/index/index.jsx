@@ -7,25 +7,27 @@
 import React        from 'react';
 import { Link }     from 'react-router-dom';
 import MUtil        from 'util/mm.jsx'
-import Product      from 'service/product-service.jsx'
+import Task     from 'service/task-service.jsx'
 
 import PageTitle    from 'component/page-title/index.jsx';
 import ListSearch   from './index-list-search.jsx';
-import TableList    from 'util/table-list/index.jsx';
 import Pagination   from 'util/pagination/index.jsx';
 import Table        from 'antd/lib/table';
 
 import './index.scss';
 
 const _mm           = new MUtil();
-const _product      = new Product();
+const _product      = new Task();
 
 class ProductList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             list            : [],
-            pageNum         : 1           
+            currentPage     : 1 ,
+            perPage         : 10,
+            startIndex      : 0,
+            listType:'list'
         };
     }
     
@@ -36,13 +38,17 @@ class ProductList extends React.Component{
     loadProductList(){
         let listParam = {};
         listParam.userId = _mm.getStorage('userInfo').userId;
-        listParam.pageNum  = this.state.pageNum;
+        listParam.currentPage  = this.state.currentPage;
+        listParam.perPage  = this.state.perPage;
+        listParam.startIndex  = this.state.startIndex;
         // 如果是搜索的话，需要传入搜索类型和搜索关键字
         if(this.state.listType === 'search'){
             listParam.keyword    = this.state.searchKeyword;
         }
+         
+        
         // 请求接口
-        _product.getProductList(listParam).then(res => {
+        _product.getAgencyList(listParam).then(res => {
                 this.setState(res);
         }, errMsg => {
             this.setState({
@@ -53,18 +59,19 @@ class ProductList extends React.Component{
     }
     // 搜索
     onSearch(searchKeyword){
-       
+        let listType = searchKeyword === '' ? 'list' : 'search';
         this.setState({
-            pageNum         : 1,
+            listType:listType,
+            currentPage         : 1,
             searchKeyword   : searchKeyword
         }, () => {
             this.loadProductList();
         });
     }
     // 页数发生变化的时候
-    onPageNumChange(pageNum){
+    onPageNumChange(currentPage){
         this.setState({
-            pageNum : pageNum
+            currentPage : currentPage
         }, () => {
             this.loadProductList();
         });
@@ -102,9 +109,9 @@ class ProductList extends React.Component{
                 <ListSearch onSearch={(searchKeyword) => {this.onSearch(searchKeyword)}}/>
                 <Table dataSource={dataSource} columns={columns} />
                 
-                <Pagination current={this.state.pageNum} 
+                <Pagination current={this.state.currentPage} 
                     total={this.state.total} 
-                    onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
+                    onChange={(currentPage) => this.onPageNumChange(currentPage)}/>
             </div>
         );
     }

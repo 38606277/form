@@ -51,7 +51,7 @@ class Home extends React.Component{
                         </Link>
                     </div>
                     <div className="col-md-4">
-                        <Link to="/product" className="color-box green">
+                        <Link to="/product/index" className="color-box green">
                             <p className="count">{this.state.productCount}</p>
                             <p className="desc">
                                 <i className="fa fa-list"></i>
