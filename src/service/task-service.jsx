@@ -24,7 +24,7 @@ class Task{
         return _mm.request({
             type    : 'post',
             url     : '/reportServer/dataCollect/getMyTaskListByUserId',
-            data    : JSON.stringify({perPage: '10',startIndex: '0', currentPage: '0' ,'queryObj':listParam})
+            data    : JSON.stringify(listParam)
         });
     }
     // 获取任务详情-弃用
