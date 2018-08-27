@@ -5,7 +5,7 @@
 * @Last Modified time: 2018-02-04 22:21:43
 */
 import React            from 'react';
-import { BrowserRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
 
 // 页面
 import IndextList      from 'page/product/index/index.jsx';
