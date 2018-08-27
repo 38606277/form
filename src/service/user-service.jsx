@@ -42,6 +42,13 @@ class User{
             msg : '验证通过'
         }
     }
+    encodePwd(pwd){
+        return _mm.request({
+            type    : 'post',
+            url     : '/reportServer/user/encodePwdReact',
+            data    :JSON.stringify({Pwd:pwd})
+        });
+    }
     // 退出登录
     logout(){
         return _mm.request({
