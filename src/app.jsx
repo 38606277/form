@@ -7,7 +7,7 @@
 
 import React            from 'react';
 import ReactDOM         from 'react-dom';
-import { BrowserRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
 
 import Layout           from 'component/layout/index.jsx';
 // 页面
