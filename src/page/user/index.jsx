@@ -56,7 +56,7 @@ class UserList extends React.Component{
           const columns = [{
             title: 'ID',
             dataIndex: 'userId',
-            key: 'userId',
+            key: 'userId'
           },{
             title: '姓名',
             dataIndex: 'userName',
@@ -70,24 +70,24 @@ class UserList extends React.Component{
             key: 'description',
             width:'200px'
           },{
-              title:'角色',
-              dataIndex:'isAdminText',
-              ke:'isAdminText'
+            title:'角色',
+            dataIndex:'isAdminText',
+            key:'isAdminText'
           }, {
             title: '入职时间',
             dataIndex: 'creationDate',
-            key: 'creationDate',
+            key: 'creationDate'
           }];
        
         return (
             <div id="page-wrapper">
                 <PageTitle title="用户列表"/>
-                <Table dataSource={dataSource} columns={columns} pagination={false}/>
+                <Table dataSource={dataSource} columns={columns} pagination={false} />
                 <Pagination current={this.state.pageNum} 
                     total={this.state.total} 
                     onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
             </div>
-        );
+        )
     }
 }
 
